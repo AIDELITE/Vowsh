@@ -20,7 +20,7 @@ export default function HomeHeader(){
             </View>
 
             <View style={{alignItems:'center',justifyContent:'center'}}>
-                <Text style={{color:colors.cardbackground, fontSize:25, fontWeight:'bold'}}>VOWSH</Text>
+                <Text style={{color:colors.cardbackground, fontSize:23, fontWeight:'bold'}}>VOWSH</Text>
             </View>
 
             <View style={{alignItems:'center',justifyContent:'center', marginRight:15}}>
