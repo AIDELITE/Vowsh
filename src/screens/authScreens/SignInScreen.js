@@ -67,6 +67,7 @@ export default function SignInScreen({navigation}){
                     title="SIGN IN"
                     buttonStyle={parameters.styledButton}
                     titleStyle={parameters.buttonTitle}
+                    onPress={()=>{navigation.navigate('HomeScreen')}}
                 />
             </View>
 
@@ -84,7 +85,7 @@ export default function SignInScreen({navigation}){
                     button
                     type="facebook"
                     style={styles.socialIcon}
-                    onPress={()=>{}}
+                    onPress={()=>{navigation.navigate('HomeScreen')}}
                 />
             </View>
 
@@ -94,7 +95,7 @@ export default function SignInScreen({navigation}){
                     button
                     type="google"
                     style={styles.socialIcon}
-                    onPress={()=>{}}
+                    onPress={()=>{navigation.navigate('HomeScreen')}}
                 />
             </View>
 
