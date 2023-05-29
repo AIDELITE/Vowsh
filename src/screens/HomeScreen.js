@@ -1,12 +1,14 @@
 import React,{ useState } from "react";
-import { View, StyleSheet, Text, TouchableOpacity,ScrollView } from "react-native";
+import { View, StyleSheet, Text, TouchableOpacity,ScrollView, FlatList,Pressable } from "react-native";
 import HomeHeader from "../components/HomeHeader";
 import { colors, parameters } from "../global/styles";
 import { Icon } from "react-native-elements";
+import { filterData } from "../global/Data";
 
 export default function HomeScreen(){
 
     const [deliver, setDelivery] = useState(true);
+    const [indexCheck, setIndexCheck] = useState('0');
     return(
         <View style={styles.container}>
             <HomeHeader/>
@@ -72,6 +74,23 @@ export default function HomeScreen(){
             <View style={styles.headerTextView}>
                 <Text style={styles.headerText}>Categories</Text>
             </View>
+
+            <View>
+                <FlatList
+                    horizontal={true}
+                    showsHorizontalScrollIndicator={true}
+                    data={filterData}
+                    keyExtractor={(item)=>item.id}
+                    extraData={indexCheck}
+                    renderItem={({item,index})=>{
+                        <Pressable>
+                            <View style={indexCheck===item.id? {...styles.smallCardSelected} : {...styles.smallCard}}>
+
+                            </View>
+                        </Pressable>
+                    }}
+                />
+            </View>
         </ScrollView>
         </View>
     )
@@ -123,5 +142,25 @@ const styles = StyleSheet.create({
     headerTextView:{
         backgroundColor:colors.grey5,
         paddingVertical:3
+    },
+    smallCard: {
+        borderRadius:30,
+        backgroundColor:colors.grey5,
+        justifyContent:'center',
+        alignItems:'center',
+        padding:5,
+        width:80,
+        margin:10,
+        height:100
+    },
+    smallCardSelected: {
+        borderRadius:30,
+        backgroundColor:colors.buttons,
+        justifyContent:'center',
+        alignItems:'center',
+        padding:5,
+        width:80,
+        margin:10,
+        height:100
     }
 })
