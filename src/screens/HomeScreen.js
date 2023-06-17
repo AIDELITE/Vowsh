@@ -1,14 +1,18 @@
 import React,{ useState } from "react";
-import { View, StyleSheet, Text, TouchableOpacity,ScrollView, FlatList,Pressable } from "react-native";
+import { View, StyleSheet, Text, TouchableOpacity,ScrollView, Image, FlatList, Pressable, Dimensions } from "react-native";
+import Countdown from 'react-native-countdown-component';
 import HomeHeader from "../components/HomeHeader";
 import { colors, parameters } from "../global/styles";
 import { Icon } from "react-native-elements";
-import { filterData } from "../global/Data";
+import { filterData, productData } from "../global/Data";
+import ProductCard from "../components/ProductCard";
+
+const SCREEN_WIDTH = Dimensions.get('window').width;
 
 export default function HomeScreen(){
 
     const [deliver, setDelivery] = useState(true);
-    const [indexCheck, setIndexCheck] = useState('0');
+    const [indexCheck, setIndexCheck] = useState("0");
     return(
         <View style={styles.container}>
             <HomeHeader/>
@@ -16,7 +20,7 @@ export default function HomeScreen(){
             stickyHeaderIndices={[0]}
             showsVerticalScrollIndicator= {true}
         >
-            <View>
+            <View style={{backgroundColor:colors.cardbackground, paddingBottom:10}}>
                 <View style={{marginTop:10, flexDirection:'row',justifyContent:'space-evenly'}}>
                     <TouchableOpacity
                         onPress={()=>{setDelivery(true)}}
@@ -82,14 +86,111 @@ export default function HomeScreen(){
                     data={filterData}
                     keyExtractor={(item)=>item.id}
                     extraData={indexCheck}
-                    renderItem={({item,index})=>{
-                        <Pressable>
+                    renderItem={({item,index})=>(
+                        <Pressable
+                            onPress={()=>{setIndexCheck(item.id)}}
+                        >
                             <View style={indexCheck===item.id? {...styles.smallCardSelected} : {...styles.smallCard}}>
-
+                                <Image
+                                    style={{height:75, width:70, borderRadius: 30,}}
+                                    source={item.image}
+                                />
+                                <View>
+                                    <Text style={indexCheck===item.id ? {...styles.smallCardTextSelected}:{...styles.smallCardText}}>
+                                        {item.name}
+                                    </Text>
+                                </View>
                             </View>
-                        </Pressable>
-                    }}
+                        </Pressable>)}
                 />
+            </View>
+            <View style={styles.headerTextView}>
+                <Text style={styles.headerText}>Flash Sales</Text>
+            </View>
+
+            <View>
+                <View style={{flexDirection:'row', alignItems:'center',marginTop:10}}>
+                    <Text style={{marginLeft:15,fontSize:16, marginTop:-10, marginRight:5}}>Offers Ending In: </Text>
+                    <Countdown
+                        until={3600}
+                        size={14}
+                        digitStyle={{backgroundColor:colors.buttons}}
+                        digitTxtStyle = {{color:colors.cardbackground}}
+                        timeToShow={['D', 'H', 'M', 'S']}
+                        timeLabels={{d: 'Days', h: 'Hrs', m: 'Mins', s: 'Secs'}}
+                    />
+                </View>
+                <FlatList
+                    style={{marginTop:10, marginBottom:10}}
+                    horizontal={true}
+                    data={productData}
+                    keyExtractor={(item,index)=>index.toString()}
+                    showsHorizontalScrollIndicator={false}
+                    renderItem={({item})=>(
+                        <View style={{marginRight:5}}>
+                            <ProductCard
+                                screenWidth={SCREEN_WIDTH*0.8}
+                                images={item.images}
+                                businessName={item.businessName}
+                                businessAddress={item.businessAddress}
+                                farAway={item.farAway}
+                                averageReview={item.averageReview}
+                                numberOfReview={item.numberOfReview}
+                            />
+                        </View>
+                    )}
+
+                />
+            </View>
+
+            <View style={styles.headerTextView}>
+                <Text style={styles.headerText}>Promotions Available</Text>
+            </View>
+
+            <View>
+                <FlatList
+                    style={{marginTop:10, marginBottom:10}}
+                    horizontal={true}
+                    data={productData}
+                    keyExtractor={(item,index)=>index.toString()}
+                    showsHorizontalScrollIndicator={false}
+                    renderItem={({item})=>(
+                        <View style={{marginRight:5}}>
+                            <ProductCard
+                                screenWidth={SCREEN_WIDTH*0.8}
+                                images={item.images}
+                                businessName={item.businessName}
+                                businessAddress={item.businessAddress}
+                                farAway={item.farAway}
+                                averageReview={item.averageReview}
+                                numberOfReview={item.numberOfReview}
+                            />
+                        </View>
+                    )}
+
+                />
+            </View>
+
+            <View style={styles.headerTextView}>
+                <Text style={styles.headerText}>Product Shops in your Area</Text>
+            </View>
+
+            <View style={{width:SCREEN_WIDTH, paddingTop:10}}>
+                {
+                    productData.map(item=>(
+                        <View key={item.id} style={{paddingBottom:20}}>
+                            <ProductCard
+                                screenWidth={SCREEN_WIDTH*0.95}
+                                images={item.images}
+                                businessName={item.businessName}
+                                businessAddress={item.businessAddress}
+                                farAway={item.farAway}
+                                averageReview={item.averageReview}
+                                numberOfReview={item.numberOfReview}
+                            />
+                        </View>
+                    ))
+                }
             </View>
         </ScrollView>
         </View>
@@ -151,7 +252,7 @@ const styles = StyleSheet.create({
         padding:5,
         width:80,
         margin:10,
-        height:100
+        height:105
     },
     smallCardSelected: {
         borderRadius:30,
@@ -161,6 +262,17 @@ const styles = StyleSheet.create({
         padding:5,
         width:80,
         margin:10,
-        height:100
+        height:105
+    },
+
+    smallCardTextSelected:{
+        fontWeight: 'bold',
+        color: colors.cardbackground
+    },
+
+    smallCardText:{
+        fontWeight: 'bold',
+        color: colors.grey3
     }
+
 })
