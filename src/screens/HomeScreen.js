@@ -117,6 +117,7 @@ export default function HomeScreen(){
                         digitStyle={{backgroundColor:colors.buttons}}
                         digitTxtStyle = {{color:colors.cardbackground}}
                         timeToShow={['D', 'H', 'M', 'S']}
+                        onFinish={() => alert('Offers Ended.')}
                         timeLabels={{d: 'Days', h: 'Hrs', m: 'Mins', s: 'Secs'}}
                     />
                 </View>

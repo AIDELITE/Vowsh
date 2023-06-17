@@ -95,7 +95,8 @@ const styles = StyleSheet.create(
             fontSize:12,
             paddingTop:5,
             color:colors.grey2,
-            paddingHorizontal:10
+            paddingHorizontal:10,
+            marginBottom:5
         },
         review:{
             position:'absolute',
