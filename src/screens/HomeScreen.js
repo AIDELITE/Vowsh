@@ -9,7 +9,7 @@ import ProductCard from "../components/ProductCard";
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 
-export default function HomeScreen(){
+export default function HomeScreen({navigation}){
 
     const [deliver, setDelivery] = useState(true);
     const [indexCheck, setIndexCheck] = useState("0");
@@ -31,7 +31,10 @@ export default function HomeScreen(){
                     </TouchableOpacity>
 
                     <TouchableOpacity
-                        onPress={()=>{setDelivery(false)}}
+                        onPress={()=>{
+                            setDelivery(false);
+                            navigation.navigate('ShopsMapScreen');
+                        }}
                     >
                         <View style={{...styles.deliveryButton,backgroundColor:deliver? colors.grey5 : colors.buttons}}>
                             <Text style={styles.deiveryText}>Pick Up</Text>
@@ -112,7 +115,7 @@ export default function HomeScreen(){
                 <View style={{flexDirection:'row', alignItems:'center',marginTop:10}}>
                     <Text style={{marginLeft:15,fontSize:16, marginTop:-10, marginRight:5}}>Offers Ending In: </Text>
                     <Countdown
-                        until={3600}
+                        until={360000}
                         size={14}
                         digitStyle={{backgroundColor:colors.buttons}}
                         digitTxtStyle = {{color:colors.cardbackground}}
@@ -194,6 +197,23 @@ export default function HomeScreen(){
                 }
             </View>
         </ScrollView>
+        { deliver &&
+            <View style={styles.floatButton}>
+                <TouchableOpacity
+                    onPress={()=>{
+                        navigation.navigate('ShopsMapScreen');
+                    }}
+                >
+                    <Icon
+                        name="place"
+                        type="material"
+                        size={32}
+                        color={colors.buttons}
+                    />
+                    <Text style={{color:colors.grey2}}>Map</Text>
+                </TouchableOpacity>
+            </View>
+        }
         </View>
     )
 }
@@ -274,6 +294,17 @@ const styles = StyleSheet.create({
     smallCardText:{
         fontWeight: 'bold',
         color: colors.grey3
+    },
+    floatButton:{
+        position:'absolute',
+        bottom:10,
+        right:13,
+        backgroundColor:'white',
+        elevation:10,
+        width:60,
+        height:60,
+        borderRadius:30,
+        alignItems:'center'
     }
 
 })
