@@ -1,8 +1,21 @@
-export const filterData = [{name: "Hair", image:require('../assets/hair_img.png'),id:"0"},
+export const filterData = [
+    {name: "Hair", image:require('../assets/hair_img.png'),id:"0"},
     {name: "Skin", image:require("../assets/skin_img.png"),id:"1"},
     {name: "Weight", image:require("../assets/weig_img.png"),id:"2"},
     {name: "Odour", image:require("../assets/odor_img.png"),id:"3"},
     {name: "Vagina", image:require("../assets/vagi_img.png"),id:"4"},
+];
+
+export const filterData2 = [
+    {name: "FemFresh", image:require('../assets/products/fem1.jpg'),id:"0"},
+    {name: "Vitanica", image:require("../assets/products/fem2.jpg"),id:"1"},
+    {name: "Equate", image:require("../assets/products/fem3.jpg"),id:"2"},
+    {name: "Good Wipes", image:require("../assets/products/fres1.jpg"),id:"3"},
+    {name: "IsoFresh", image:require("../assets/products/fres2.jpg"),id:"4"},
+    {name: "RePHresh", image:require("../assets/products/fres3.jpg"),id:"5"},
+    {name: "Vagisil", image:require("../assets/products/was1.jpg"),id:"6"},
+    {name: "Restore", image:require("../assets/products/was2.jpg"),id:"7"},
+    {name: "LaWash", image:require("../assets/products/was3.jpg"),id:"8"}
 ];
 
 export const productData = [
