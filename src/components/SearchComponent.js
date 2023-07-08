@@ -106,7 +106,7 @@ export default function SearchComponent(){
                             <TouchableOpacity
                                 onPress={()=>{
                                     Keyboard.dismiss
-                                    navigation.navigate("ProductCard",{item: item.name})
+                                    navigation.navigate("SearchResultsScreen",{item: item.name})
                                     SetModalVisible(false)
                                     setTextInputFocussed(true)
                                 }} >

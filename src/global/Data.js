@@ -97,3 +97,15 @@ export const productData = [
         id:5
     },
 ]
+
+export const productItems = [
+    {name:'FemFresh',price: 22.90, image: require("../assets/products/fem1.jpg"), details:'this is product 1',id:'0'},
+    {name:'Vitanica',price: 26.90, image: require("../assets/products/fem2.jpg"), details:'this is product 2',id:'1'},
+    {name:'Equate',price: 21.90, image: require("../assets/products/fem3.jpg"), details:'this is product 3',id:'2'},
+    {name:'Good Wipes',price: 24.90, image: require("../assets/products/fres1.jpg"), details:'this is product 4',id:'3'},
+    {name:'IsoFresh',price: 30.30, image: require("../assets/products/fres2.jpg"), details:'this is product 5',id:'4'},
+    {name:'RePHresh',price: 21.67, image: require("../assets/products/fres3.jpg"), details:'this is product 6',id:'5'},
+    {name:'Vagisil',price: 24.90, image: require("../assets/products/was1.jpg"), details:'this is product 7',id:'6'},
+    {name:'Restore',price: 30.30, image: require("../assets/products/was2.jpg"), details:'this is product 8',id:'7'},
+    {name:'LaWash',price: 27.67, image: require("../assets/products/was3.jpg"), details:'this is product 9',id:'8'}
+]

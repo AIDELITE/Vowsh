@@ -3,9 +3,9 @@ import { createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import { Icon } from "react-native-elements";
 import HomeScreen from "../screens/HomeScreen";
 import { colors } from "../global/styles";
-import SearchScreen from "../screens/SearchScreen";
 import MyOrdersScreen from "../screens/MyOrdersScreen";
 import MyAccountScreen from "../screens/MyAccountScreen";
+import { ClientStack } from "./clientStack";
 
 const clientTabs = createBottomTabNavigator();
 
@@ -36,8 +36,8 @@ export default function RootClientTabs(){
             />
 
             <clientTabs.Screen
-                name="SearchScreen"
-                component={SearchScreen}
+                name="ClientSearchScreen"
+                component={ClientStack}
                 options={
                     {
                         tabBarLabel :"Search",
