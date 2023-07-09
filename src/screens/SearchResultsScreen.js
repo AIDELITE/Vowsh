@@ -24,6 +24,7 @@ const SearchResultScreen =({navigation, route})=>{
                             farAway={item.farAway}
                             businessAddress={item.businessAddress}
                             productItems={item.productInfo}
+                            onPressProductCard={()=>{navigation.navigate('ShopsHomeScreen',{id:index,shop:item.businessName})}}
                         />
                     )}
                     ListHeaderComponent={
