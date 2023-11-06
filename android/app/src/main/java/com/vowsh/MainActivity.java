@@ -1,10 +1,12 @@
 package com.vowsh;
-
+import android.os.Bundle; // here
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;
 import com.facebook.react.defaults.DefaultNewArchitectureEntryPoint;
 import com.facebook.react.defaults.DefaultReactActivityDelegate;
 
+//splashscreen
+import org.devio.rn.splashscreen.SplashScreen; // SplashScreen here
 public class MainActivity extends ReactActivity {
 
   /**
@@ -15,6 +17,12 @@ public class MainActivity extends ReactActivity {
   protected String getMainComponentName() {
     return "Vowsh";
   }
+
+  @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        SplashScreen.show(this);  // here
+        super.onCreate(savedInstanceState);
+    }
 
   /**
    * Returns the instance of the {@link ReactActivityDelegate}. Here we use a util class {@link

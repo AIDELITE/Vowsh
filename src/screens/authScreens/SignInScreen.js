@@ -9,6 +9,14 @@ export default function SignInScreen({navigation}){
 
     const [textInput2Fossued,setText2Fossued] = useState(false);
 
+    const [password, setPassword] = useState(''); //holds the state of the password.
+
+    const [showPassword, setShowPassword] = useState(false); //tracks the state of password visibility.
+
+    const toggleShowPassword = () => {
+        setShowPassword(!showPassword);
+    };
+
     const textInput1 = useRef(1);
     const textInput2 = useRef(2);
     return(
@@ -41,6 +49,7 @@ export default function SignInScreen({navigation}){
                         />
                     </Animatable.View>
                     <TextInput
+                        secureTextEntry={!showPassword}
                         style={{width:"80%"}}
                         placeholder="Password"
                         ref={textInput2}
@@ -50,13 +59,16 @@ export default function SignInScreen({navigation}){
                         onBlur={()=>{
                             setText2Fossued(true);
                         }}
+                        onChangeText={setPassword}
+                        value={password}
                     />
                     <Animatable.View animation={textInput2Fossued? "":"fadeInLeft"} duration={400}>
                         <Icon
-                            name="visibility-off"
                             iconStyle={colors.grey3}
                             type="material"
-                            style={{marginRight:10}}
+                            style={{marginRight:15}}
+                            name={showPassword ? 'visibility' : 'visibility-off'}
+                            onPress={toggleShowPassword}
                         />
                     </Animatable.View>
                 </View>
@@ -131,7 +143,7 @@ const styles = StyleSheet.create({
         marginHorizontal: 20,
         borderRadius: 12,
         marginBottom: 20,
-        paddingLeft: 15
+        paddingLeft: 40
     },
 
     TextInput2: {
