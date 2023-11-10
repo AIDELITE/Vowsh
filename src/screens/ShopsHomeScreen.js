@@ -1,10 +1,11 @@
-import { StyleSheet, Text, View, Dimensions,ScrollView } from 'react-native'
+import { StyleSheet, Text, View, Dimensions,ScrollView,TouchableOpacity } from 'react-native'
 import React,{useState} from 'react'
 import ShopsHeader from '../components/ShopsHeader'
 import { colors,fonts } from '../global/styles';
 import { productData } from '../global/Data';
 import { Icon } from 'react-native-elements';
 import { TabView, TabBar } from 'react-native-tab-view';
+import MenuScreen from './ShopTabs/MenuScreen';
 const SCREEN_WIDTH = Dimensions.get('window').width;
 const ShopsHomeScreen = ({navigation,route}) => {
 
@@ -93,7 +94,22 @@ const ShopsHomeScreen = ({navigation,route}) => {
                         tabBarPosition='top'
                     />
                 </View>
+
+                {
+                    index===0 &&
+                    <MenuScreen/>
+                }
             </ScrollView>
+            <TouchableOpacity>
+                <View style={styles.view11}>
+                    <View style={styles.view12}>
+                        <Text style={styles.text13}>View Cart</Text>
+                        <View style={styles.view13}>
+                            <Text style={styles.text13}>0</Text>
+                        </View>
+                    </View>
+                </View>
+            </TouchableOpacity>
         </View>
     )
 }
@@ -103,8 +119,7 @@ export default ShopsHomeScreen
 
 const styles = StyleSheet.create({
     container:{
-        flex:1,
-        marginTop:1
+        flex:1
     },
     view1:{
         width:'100%',
@@ -228,7 +243,8 @@ const styles = StyleSheet.create({
     view12:{
         flexDirection:'row',
         justifyContent:'space-between',
-        alignItems:'center'
+        alignItems:'center',
+        paddingHorizontal:10
     },
     text12:{
         padding:10,
@@ -246,8 +262,8 @@ const styles = StyleSheet.create({
     text13:{
         paddingHorizontal:3,
         fontSize:18,
-        fontWeight:'bold',
-        color:colors.CardComment
+        fontWeight:'800',
+        color:colors.cardbackground
     },
     tab:{
         paddingTop:0,

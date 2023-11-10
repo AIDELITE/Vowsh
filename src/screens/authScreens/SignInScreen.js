@@ -1,5 +1,5 @@
 import React,{useState,useRef} from "react";
-import { View, Text, StyleSheet, Dimensions, TextInput} from "react-native";
+import { View, Text, StyleSheet, TextInput} from "react-native";
 import { colors, parameters,title} from '../../global/styles';
 import { Icon,Button,SocialIcon } from "react-native-elements";
 import Header from "../../components/Header";
@@ -120,6 +120,9 @@ export default function SignInScreen({navigation}){
                     title="Create an account"
                     buttonStyle={styles.createButton}
                     titleStyle={styles.createButtonTitle}
+                    onPress={()=>{
+                        navigation.navigate("SignUpScreen");
+                    }}
                 />
             </View>
         </View>

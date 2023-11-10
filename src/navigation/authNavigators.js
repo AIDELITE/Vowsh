@@ -2,6 +2,7 @@ import React from "react";
 import { createStackNavigator, TransitionPresets } from "@react-navigation/stack";
 import SignInWelcomeScreen from "../screens/authScreens/SignInWelcomeScreen";
 import SignInScreen from "../screens/authScreens/SignInScreen";
+import SignUpScreen from "../screens/authScreens/SignUpScreen";
 import HomeScreen from "../screens/HomeScreen";
 import RootClientTabs from "./clientTabs";
 import ShopsMapScreen from "../screens/ShopsMapScreen";
@@ -42,6 +43,15 @@ export default function AuthStack(){
             <Auth.Screen
                 name = "ShopsMapScreen"
                 component = {ShopsMapScreen}
+                options = {{
+                    headerShown: false,
+                    ...TransitionPresets.SlideFromRightIOS
+                }}
+            />
+
+            <Auth.Screen
+                name = "SignUpScreen"
+                component = {SignUpScreen}
                 options = {{
                     headerShown: false,
                     ...TransitionPresets.SlideFromRightIOS

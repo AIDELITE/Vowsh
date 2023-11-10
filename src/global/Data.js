@@ -109,3 +109,22 @@ export const productItems = [
     {name:'Restore',price: 30.30, image: require("../assets/products/was2.jpg"), details:'this is product 8',id:'7'},
     {name:'LaWash',price: 27.67, image: require("../assets/products/was3.jpg"), details:'this is product 9',id:'8'}
 ]
+
+export const menuData = [
+    {title:"MIADI HAIR PRODUCTS",special:false, key:0},
+    {title:"SHAMPOOS",special:false,key:1},
+    {title:"HAIR WEAVES",special:false,key:2},
+    {title:"NEVEA MEN LOTIONS",special:false,key:3},
+    {title:"MOVIT HAIR SPAYS",special:false,key:4},
+    {title:"GOOD WIPES",special:false,key:5},
+    {title:"LA WASH",special:false,key:6},
+    {title:"EQUATE",special:false,key:7},
+    {title:"VITANICA",special:false,key:8}
+]
+
+export const specialData = [
+    {title:"LIMITED OFFERS",key:0},
+    {title:"MOVIT PROMOS",key:1},
+    {title:"DOUBLE DOUBLE",key:2},
+    {title:"FREE DEMOS",key:3},
+]

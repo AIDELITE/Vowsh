@@ -42,7 +42,6 @@ export default function ShopsHeader({navigation,id}) {
             <ImageBackground
                 style={styles.container}
                 source={productData[id].images}
-                imageStyle={styles.image}
             >
 
             <View style={styles.view1}>
@@ -87,10 +86,6 @@ export default function ShopsHeader({navigation,id}) {
 const styles = StyleSheet.create({
     container:{
         height:170,
-    },
-    image:{
-        borderTopLeftRadius:5,
-        borderTopRightRadius:5
     },
     view1:{
         flexDirection:'row',
