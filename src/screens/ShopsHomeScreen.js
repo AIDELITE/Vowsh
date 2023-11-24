@@ -6,6 +6,7 @@ import { productData } from '../global/Data';
 import { Icon } from 'react-native-elements';
 import { TabView, TabBar } from 'react-native-tab-view';
 import MenuScreen from './ShopTabs/MenuScreen';
+
 const SCREEN_WIDTH = Dimensions.get('window').width;
 const ShopsHomeScreen = ({navigation,route}) => {
 
@@ -17,6 +18,7 @@ const ShopsHomeScreen = ({navigation,route}) => {
         {key:'third',title:'REVIEWS'},
         {key:'fourth',title:'GALLERY'},
     ])
+    // const [modalVisible, setModalVisible] = useState(false);
     const [index,setIndex] = useState(0);
     const renderTabBar = props =>(
         <TabBar
@@ -29,6 +31,7 @@ const ShopsHomeScreen = ({navigation,route}) => {
             contentContainerStyle={styles.tabContainer}
         />
     );
+
     const UpdateRoute1 =()=>{
         return(
             <View>
@@ -36,6 +39,11 @@ const ShopsHomeScreen = ({navigation,route}) => {
             </View>
         )
     }
+
+    const menuPressed =()=>{
+        navigation.navigate("MenuProductScreen");
+    }
+
     return (
         <View style={styles.container}>
             <ScrollView>
@@ -97,7 +105,9 @@ const ShopsHomeScreen = ({navigation,route}) => {
 
                 {
                     index===0 &&
-                    <MenuScreen/>
+                    <MenuScreen
+                        onPress={menuPressed}
+                    />
                 }
             </ScrollView>
             <TouchableOpacity>
@@ -238,7 +248,8 @@ const styles = StyleSheet.create({
         backgroundColor:colors.buttons,
         height:50,
         alignContent:'center',
-        marginBottom:0
+        marginBottom:0,
+        justifyContent:'center'
     },
     view12:{
         flexDirection:'row',
@@ -283,5 +294,25 @@ const styles = StyleSheet.create({
     tabStyle:{
         width:SCREEN_WIDTH/4,
         maxHeight:45
+    },
+    view14:{
+        flexDirection:'row',
+        alignItems:'center',
+        padding:10,
+        backgroundColor:colors.buttons,
+        top:0,
+        right:0,
+        left:0,
+        paddingTop:25
+    },
+    text14:{
+        fontWeight:'bold',
+        marginLeft:40,
+        color:colors.black,
+        fontSize:18
+    },
+    view15:{
+        marginTop:5,
+        paddingBottom:20
     }
 })

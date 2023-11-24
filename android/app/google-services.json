@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "377170472597",
+    "project_id": "vowsh-66fa4",
+    "storage_bucket": "vowsh-66fa4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:377170472597:android:bbb6d85c2173a81518f59c",
+        "android_client_info": {
+          "package_name": "com.vowsh"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAqG1MrWRHDOXoLa-u_Y6CJ1LtVl8KHfAQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

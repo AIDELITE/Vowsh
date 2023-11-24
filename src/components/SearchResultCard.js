@@ -158,5 +158,10 @@ const styles = StyleSheet.create({
         paddingTop:5,
         color:colors.grey2,
         paddingHorizontal:10
+    },
+    text7:{
+        fontWeight:'700',
+        fontSize:15,
+        paddingHorizontal:10
     }
 })

@@ -4,10 +4,7 @@ import { colors } from '../../global/styles'
 import { Icon } from 'react-native-elements'
 import { menuData, specialData } from '../../global/Data'
 
-const MenuScreen = ({navigation,shop}) => {
-    const handPress =()=>{
-        //navigation.navigate("");
-    }
+const MenuScreen = ({navigation,shop,onPress}) => {
   return (
     <View style={styles.container}>
         <View>
@@ -17,7 +14,7 @@ const MenuScreen = ({navigation,shop}) => {
                         key={items.key}
                         style={styles.view1}
                     >
-                        <TouchableOpacity onPress={handPress}>
+                        <TouchableOpacity onPress={onPress}>
                             <View style={styles.view2}>
                                 <Icon
                                     name='star'
@@ -39,7 +36,7 @@ const MenuScreen = ({navigation,shop}) => {
                         key={item.key}
                         style={styles.view1}
                     >
-                        <TouchableOpacity onPress={handPress}>
+                        <TouchableOpacity onPress={onPress}>
                             <View style={styles.view2}>
                                 <Text style={styles.text1}>{item.title}</Text>
                             </View>

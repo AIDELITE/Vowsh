@@ -128,3 +128,14 @@ export const specialData = [
     {title:"DOUBLE DOUBLE",key:2},
     {title:"FREE DEMOS",key:3},
 ]
+
+export const menu = [
+    {key:1, title: "LAWASH"},
+    {key:2, title: "SHAMPOO"},
+    {key:3, title: "EQUATE"},
+    {key:4, title: "HAIR FOOD"},
+    {key:5, title: "V-WASH"},
+    {key:6, title: "VITANICA"},
+    {key:7, title: "WIPES"},
+    {key:8, title: "DEODRANTS"},
+]

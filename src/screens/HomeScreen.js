@@ -142,6 +142,7 @@ export default function HomeScreen({navigation}){
                                 farAway={item.farAway}
                                 averageReview={item.averageReview}
                                 numberOfReview={item.numberOfReview}
+                                onPressProductCard={()=>{navigation.navigate('ShopsHomeScreen',{id:item.id,shop:item.businessName})}}
                             />
                         </View>
                     )}
@@ -170,6 +171,7 @@ export default function HomeScreen({navigation}){
                                 farAway={item.farAway}
                                 averageReview={item.averageReview}
                                 numberOfReview={item.numberOfReview}
+                                onPressProductCard={()=>{navigation.navigate('ShopsHomeScreen',{id:item.id,shop:item.businessName})}}
                             />
                         </View>
                     )}
@@ -193,6 +195,7 @@ export default function HomeScreen({navigation}){
                                 farAway={item.farAway}
                                 averageReview={item.averageReview}
                                 numberOfReview={item.numberOfReview}
+                                onPressProductCard={()=>{navigation.navigate('ShopsHomeScreen', {id:item.id,shop:item.businessName})}}
                             />
                         </View>
                     ))

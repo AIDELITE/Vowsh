@@ -4,21 +4,22 @@ import { createStackNavigator, TransitionPresets} from '@react-navigation/stack'
 import SearchScreen from '../screens/SearchScreen';
 import SearchResultScreen from '../screens/SearchResultsScreen';
 import ShopsHomeScreen from '../screens/ShopsHomeScreen';
+import MenuProductScreen from '../screens/MenuProductScreen';
 import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
 const ClientSearch = createStackNavigator();
 export function ClientStack({navigation,route}) {
 
     useLayoutEffect(()=>{
         const routeName = getFocusedRouteNameFromRoute(route);
-        if(routeName==="ShopsHomeScreen"){
+        if(routeName==="ShopsHomeScreen" || routeName==="MenuProductScreen"){
             navigation.setOptions({
                 tabBarStyle: { display: 'none' },
-              });
+                });
         }
         else{
             navigation.setOptions({
                 tabBarStyle: { display: 'flex' },
-              });
+                });
         }
     },[navigation,route])
     return (
@@ -42,6 +43,14 @@ export function ClientStack({navigation,route}) {
             <ClientSearch.Screen
                 name='ShopsHomeScreen'
                 component={ShopsHomeScreen}
+                options={()=>({
+                    headerShown: false
+                })}
+            />
+
+            <ClientSearch.Screen
+                name='MenuProductScreen'
+                component={MenuProductScreen}
                 options={()=>({
                     headerShown: false
                 })}
