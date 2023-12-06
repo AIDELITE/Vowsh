@@ -1,19 +1,26 @@
-import React,{useState,useRef} from "react";
-import { View, Text, StyleSheet, TextInput, Alert} from "react-native";
+import React,{useState,useRef,useContext} from "react";
+import { View, Text, StyleSheet, TextInput,ActivityIndicator,ToastAndroid} from "react-native";
 import { colors, parameters,title} from '../../global/styles';
 import { Icon,Button,SocialIcon } from "react-native-elements";
 import { Formik } from "formik";
 import Header from "../../components/Header";
 import * as Animatable from 'react-native-animatable';
 import auth from '@react-native-firebase/auth';
-//import auth from "@react-native-firebase/auth";
+import { SignInContext } from "../../context/authContext";
 
 
 export default function SignInScreen({navigation}){
 
-    const [textInput2Fossued,setText2Fossued] = useState(false);
+    const showErrorToast =(message)=>{
+        ToastAndroid.showWithGravity(
+            message,
+            ToastAndroid.SHORT,
+            ToastAndroid.CENTER
+        )
+    }
 
-    const [password, setPassword] = useState(''); //holds the state of the password.
+    const {dispatchSignedIn} = useContext(SignInContext);
+    const [textInput2Fossued,setText2Fossued] = useState(false);
 
     const [showPassword, setShowPassword] = useState(false); //tracks the state of password visibility.
 
@@ -27,13 +34,35 @@ export default function SignInScreen({navigation}){
     async function signIn(data){
         try{
         const {password,email} = data
-        const user = await auth().signInWithEmailAndPassword(email,password)
+        let new_mail = email.trim();
+        let new_password = password.trim();
+        if(new_mail==="")
+        {
+            showErrorToast('Please Enter Email Address');
+        }else if(new_password==="")
+        {
+            showErrorToast('Please Enter Password');
+        }else{
+        const user = await auth().signInWithEmailAndPassword(new_mail,new_password)
         if(user){
-            console.log("SIGNED IN")
+            dispatchSignedIn({type:'UPDATE_SIGN_IN',payload:{userToken:'signed-in'}})
+        }}
+        }catch(error){
+            if(error.code ==='auth/invalid-email'){
+                showErrorToast('Please Enter A Valid Email Address');
+            }
+            else if(error.code ==='auth/invalid-credential'){
+                showErrorToast('Email Or Password is NOT Correct');
+            }
+
+            else if(error.code ==='auth/network-request-failed'){
+                showErrorToast('No Network Connection, Please Check your Network Connectivity');
+            }
+
+            else{
+                showErrorToast('Cannot Sign in At this Time');
+            }
         }
-    }catch(error){
-        Alert.alert(error.name,error.message)
-    }
     }
     return(
         <View style={styles.container}>
@@ -49,6 +78,7 @@ export default function SignInScreen({navigation}){
             <Formik
                 initialValues={{email:'',password:''}}
                 onSubmit={(values)=>{
+
                     signIn(values)
                 }}
             >
@@ -63,6 +93,7 @@ export default function SignInScreen({navigation}){
                     ref={textInput1}
                     onChangeText={props.handleChange('email')}
                     value={props.values.email}
+                    autoComplete="off"
                     />
                 </View>
 
@@ -215,5 +246,11 @@ const styles = StyleSheet.create({
         alignItems:'center',
         justifyContent:'center',
         marginTop:-3
+    },
+    loader:{
+        position:'absolute',
+        width:60,
+        height:60,
+        alignItems:'center'
     }
 })
