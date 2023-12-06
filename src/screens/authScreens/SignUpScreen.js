@@ -6,6 +6,7 @@ import { colors, parameters,title} from '../../global/styles';
 import { Formik } from 'formik';
 import * as Animatable from 'react-native-animatable';
 import auth from '@react-native-firebase/auth';
+import PhoneInput from 'react-native-international-phone-number';
 
 const initialValues ={
     phone_number:'',
@@ -16,6 +17,18 @@ const initialValues ={
 }
 
 const SignUpScreen =({navigation})=>{
+
+    //************handles phone numbers */
+    const [selectedCountry, setSelectedCountry] = useState('null');
+    const [inputValue, setInputValue] = useState('');
+
+    function handleInputValue(phoneNumber) {
+        setInputValue(phoneNumber);
+    }
+    function handleSelectedCountry(country) {
+        setSelectedCountry(country);
+    }
+    //----------end of phone number scripts*******/
     const [PasswordFocussed,setPasswordFocussed] = useState(false);
     const [PasswordBlured,setPasswordBlured] = useState(false);
 
@@ -28,7 +41,7 @@ const SignUpScreen =({navigation})=>{
         }catch(error){
             if(error.code ==='auth/email-already-in-use'){
                 Alert.alert(
-                    'That email Address is already in use'
+                    'That email Address is Already in use'
                 )
             }else if(error.code ==='auth/invalid-email')
             {
@@ -60,15 +73,21 @@ const SignUpScreen =({navigation})=>{
                         <View>
                             <Text style={styles.text2}>New on Vowsh?</Text>
                         </View>
-                            <View style={styles.view6}>
-                                <TextInput
+                            <View style={{paddingTop:20}}>
+                                <PhoneInput
+                                    value={inputValue}
+                                    onChangePhoneNumber={handleInputValue}
+                                    selectedCountry={selectedCountry}
+                                    onChangeSelectedCountry={handleSelectedCountry}
+                                />
+                                {/* <TextInput
                                     placeholder='Mobile Number'
                                     style={styles.input1}
                                     keyboardType='number-pad'
                                     autoFocus={true}
                                     onChangeText={props.handleChange('phone_number')}
                                     value={props.values.phone_number}
-                                />
+                                /> */}
                             </View>
 
                             <View style={styles.view6}>

@@ -7,6 +7,7 @@ import Header from "../../components/Header";
 import * as Animatable from 'react-native-animatable';
 import auth from '@react-native-firebase/auth';
 import { SignInContext } from "../../context/authContext";
+import Loader from "../../components/Loader";
 
 
 export default function SignInScreen({navigation}){
@@ -70,7 +71,6 @@ export default function SignInScreen({navigation}){
             <View style={{marginLeft:20, marginTop:10}}>
                 <Text style={title}>Sign-In</Text>
             </View>
-
             <View style={{alignItems:"center",marginTop:10}}>
                 <Text style={styles.text1}>Please Enter Email and Password</Text>
                 <Text style={styles.text1}>Registered with your Account</Text>
@@ -96,7 +96,6 @@ export default function SignInScreen({navigation}){
                     autoComplete="off"
                     />
                 </View>
-
                 <View style={styles.TextInput2}>
                     <Animatable.View animation={textInput2Fossued? "":"fadeInLeft"} duration={400}>
                         <Icon
@@ -131,7 +130,6 @@ export default function SignInScreen({navigation}){
                     </Animatable.View>
                 </View>
             </View>
-
             <View style={{marginHorizontal:20, marginTop:30}}>
                 <Button
                     title="SIGN IN"
@@ -148,7 +146,9 @@ export default function SignInScreen({navigation}){
             <View style={{alignItems:'center', marginTop:15}}>
                 <Text style={{...styles.text1,textDecorationLine:'underline'}}>Forgot Password ?</Text>
             </View>
-
+            <View>
+                <Loader/>
+            </View>
             <View style={{alignItems:'center', marginTop:30, marginBottom:20}}>
                 <Text style={{fontSize:18, fontWeight:'bold'}}>OR</Text>
             </View>

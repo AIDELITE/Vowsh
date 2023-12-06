@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, Dimensions, Image} from "react-native";
 import { colors, parameters,title} from '../../global/styles';
 import { Icon,Button,SocialIcon } from "react-native-elements";
 import Swiper from "react-native-swiper";
+import Loader from "../../components/Loader";
 
 export default function SignInWelcomeScreen({navigation}){
     return(

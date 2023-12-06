@@ -6151,6 +6151,11 @@ react-native-countdown-component@^2.7.1:
     prop-types "^15.5.8"
     sprintf-js "^1.1.1"
 
+react-native-country-codes-picker@2.3.3:
+  version "2.3.3"
+  resolved "https://registry.npmjs.org/react-native-country-codes-picker/-/react-native-country-codes-picker-2.3.3.tgz"
+  integrity sha512-ENK7dXcQiAmQoHOImosO27Pf5yMfRi77yK7u+KD4EV5qaNBBK9/2RYYHt0naqd+E20VvHJqpZG7OVwWXptzGuw==
+
 react-native-elements@^3.4.3:
   version "3.4.3"
   resolved "https://registry.npmjs.org/react-native-elements/-/react-native-elements-3.4.3.tgz"
@@ -6180,6 +6185,20 @@ react-native-gradle-plugin@^0.71.18:
   version "0.71.18"
   resolved "https://registry.npmjs.org/react-native-gradle-plugin/-/react-native-gradle-plugin-0.71.18.tgz"
   integrity sha512-7F6bD7B8Xsn3JllxcwHhFcsl9aHIig47+3eN4IHFNqfLhZr++3ElDrcqfMzugM+niWbaMi7bJ0kAkAL8eCpdWg==
+
+react-native-indicators@^0.17.0:
+  version "0.17.0"
+  resolved "https://registry.npmjs.org/react-native-indicators/-/react-native-indicators-0.17.0.tgz"
+  integrity sha512-s23em477GHGxWeGczWrixScAZD6tQU4mx1fttlrwhEGKOxhBgp55Kh3RoD9Wj4yna4e5W35xQNoPqoJAT6QW5A==
+  dependencies:
+    prop-types "^15.5.10"
+
+react-native-international-phone-number@^0.7.2:
+  version "0.7.2"
+  resolved "https://registry.npmjs.org/react-native-international-phone-number/-/react-native-international-phone-number-0.7.2.tgz"
+  integrity sha512-wqyFQtIpzYkIKvHOS3YKU+01s/yzXkoHq3NB4G/qm4aJf36FiGnMhJqxJQBBH/Arn1XvYOUIR+phUIdzeYeNlg==
+  dependencies:
+    react-native-country-codes-picker "2.3.3"
 
 react-native-pager-view@*, react-native-pager-view@^6.2.0:
   version "6.2.2"
