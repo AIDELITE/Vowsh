@@ -12,6 +12,7 @@ import Loader from "../../components/Loader";
 
 export default function SignInScreen({navigation}){
 
+    const [showLoader,setshowLoader] = useState(false);
     const showErrorToast =(message)=>{
         ToastAndroid.showWithGravity(
             message,
@@ -44,11 +45,15 @@ export default function SignInScreen({navigation}){
         {
             showErrorToast('Please Enter Password');
         }else{
+        setshowLoader(true);
         const user = await auth().signInWithEmailAndPassword(new_mail,new_password)
         if(user){
+            console.log(user);
+            setshowLoader(false);
             dispatchSignedIn({type:'UPDATE_SIGN_IN',payload:{userToken:'signed-in'}})
         }}
         }catch(error){
+            setshowLoader(false);
             if(error.code ==='auth/invalid-email'){
                 showErrorToast('Please Enter A Valid Email Address');
             }
@@ -59,7 +64,6 @@ export default function SignInScreen({navigation}){
             else if(error.code ==='auth/network-request-failed'){
                 showErrorToast('No Network Connection, Please Check your Network Connectivity');
             }
-
             else{
                 showErrorToast('Cannot Sign in At this Time');
             }
@@ -78,7 +82,6 @@ export default function SignInScreen({navigation}){
             <Formik
                 initialValues={{email:'',password:''}}
                 onSubmit={(values)=>{
-
                     signIn(values)
                 }}
             >
@@ -147,7 +150,9 @@ export default function SignInScreen({navigation}){
                 <Text style={{...styles.text1,textDecorationLine:'underline'}}>Forgot Password ?</Text>
             </View>
             <View>
-                <Loader/>
+                {showLoader &&
+                    <Loader/>
+                }
             </View>
             <View style={{alignItems:'center', marginTop:30, marginBottom:20}}>
                 <Text style={{fontSize:18, fontWeight:'bold'}}>OR</Text>
