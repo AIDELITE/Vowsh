@@ -5,7 +5,9 @@ import SearchScreen from '../screens/SearchScreen';
 import SearchResultScreen from '../screens/SearchResultsScreen';
 import ShopsHomeScreen from '../screens/ShopsHomeScreen';
 import MenuProductScreen from '../screens/MenuProductScreen';
+import HomeScreen from '../screens/HomeScreen';
 import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
+
 const ClientSearch = createStackNavigator();
 export function ClientStack({navigation,route}) {
 

@@ -55,7 +55,7 @@ export default function HomeScreen({navigation}){
                             size={26}
                         />
 
-                        <Text style={{marginLeft:10}}>Kireka, Kampala</Text>
+                        <Text style={{marginLeft:10}}>Kampala, Uganda</Text>
                     </View>
 
                     <View style={styles.clockView}>
@@ -110,14 +110,14 @@ export default function HomeScreen({navigation}){
                 />
             </View>
             <View style={styles.headerTextView}>
-                <Text style={styles.headerText}>Flash Sales</Text>
+                <Text style={styles.headerText}>Festive Season Offers</Text>
             </View>
 
             <View>
                 <View style={{flexDirection:'row', alignItems:'center',marginTop:10}}>
                     <Text style={{marginLeft:15,fontSize:16, marginTop:-10, marginRight:5}}>Offers Ending In: </Text>
                     <Countdown
-                        until={360000}
+                        until={860000}
                         size={14}
                         digitStyle={{backgroundColor:colors.buttons}}
                         digitTxtStyle = {{color:colors.cardbackground}}
